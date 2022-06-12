@@ -5,6 +5,8 @@
 
 I am a PhD research scholar in Mechanical Engineering Department, IIT Bombay; working with [Prof. Bhanchandra Puranik](https://www.me.iitb.ac.in/?q=faculty/Prof.%20Bhalchandra%20Puranik) and [Prof. Kowsik Bodi](https://www.aero.iitb.ac.in/home/people/faculty/kbodi).
 
+We are working on performing high order simulations of hypersonic shock-boundary layer interactions, using the discontinuous Galerkin method.
+
 ## Academic background
 - B.Tech, Mechanical Engineering Department, IIT Bombay, 2018.
 
