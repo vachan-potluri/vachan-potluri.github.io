@@ -26,3 +26,4 @@ We are working on performing high order simulations of hypersonic shock-boundary
 - [Autumn 2021 teaching certificate](teaching_certificate_autumn2021.pdf)
 - [Spring 2022 teaching certificate](teaching_certificate_spring2022.pdf)
 
+_Note: To see the latest version of my website, view it in an 'incognito' or 'private' window, or clear your browser cache._
