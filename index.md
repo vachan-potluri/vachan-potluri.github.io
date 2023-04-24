@@ -12,7 +12,7 @@ I am a PhD research scholar in Mechanical Engineering Department, IIT Bombay; wo
 We are working on performing high order simulations of hypersonic shock-boundary layer interactions, using the discontinuous Galerkin method.
 
 ## Publications
-- Vachan D. Potluri, Bhalchandra P. Puranik, Kowsik V.R. Bodi. ``High order discontinuous Galerkin simulation of hypersonic shock-boundary layer interaction using subcell limiting approach''. _Journal of Computational Physics_ __485__, p. 112117, 2023. DOI: https://doi.org/10.1016/j.jcp.2023.112117. [Preprint](resources/jcp_preprint.pdf).
+- Vachan D. Potluri, Bhalchandra P. Puranik, Kowsik V.R. Bodi. ``High order discontinuous Galerkin simulation of hypersonic shock-boundary layer interaction using subcell limiting approach''. _Journal of Computational Physics_ __485__, p. 112117, 2023. DOI: https://doi.org/10.1016/j.jcp.2023.112117. [Preprint](publications/jcp_preprint.pdf).
 - Vachan D. Potluri, Bhalchandra P. Puranik, Kowsik V.R. Bodi. ``Effect of polynomial degree on discontinuous Galerkin simulation of Euler equations''. _International Shock Interaction Symposium_, 2022.
 
 ## Academic background
