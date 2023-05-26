@@ -1,7 +1,7 @@
 # Vachan Potluri
 
 <img
-     src="cv/photo.jpg"
+     src="cv_resume/photo.jpg"
      alt="DashBoard" 
      style="max-width: 25%;"
 >
@@ -24,6 +24,7 @@ We are working on performing high order simulations of hypersonic shock-boundary
 - [Spring 2021 teaching certificate](resources/teaching_certificate_spring2021.pdf)
 - [Autumn 2021 teaching certificate](resources/teaching_certificate_autumn2021.pdf)
 - [Spring 2022 teaching certificate](resources/teaching_certificate_spring2022.pdf)
+- [Spring 2023 teaching certificate](resources/teaching_certificate_spring2023.pdf)
 - [Presentation at PMRF review, December 2020](resources/review_dec_2020_presentation.pdf)
 - [Presentation at PMRF review, December 2021](resources/review_dec_2021_presentation.pdf)
 - [Presentation at PMRF review, May 2022](resources/review_may_2022_presentation.pdf)
