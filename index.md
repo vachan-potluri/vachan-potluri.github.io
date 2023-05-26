@@ -19,7 +19,7 @@ We are working on performing high order simulations of hypersonic shock-boundary
 - B.Tech., Mechanical Engineering Department, IIT Bombay, 2018.
 
 ## Resources
-- [CV](cv/cv.pdf)
+- [Resume](cv_resume/resume.pdf)
 - [Basic overview of research topic](resources/research_details.pdf)
 - [Spring 2021 teaching certificate](resources/teaching_certificate_spring2021.pdf)
 - [Autumn 2021 teaching certificate](resources/teaching_certificate_autumn2021.pdf)
