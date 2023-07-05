@@ -7,12 +7,14 @@
     style=authoryear,
     isbn=false,
     url=false,
+    backend=bibtex,
 ]{biblatex}
 \usepackage{enumitem}
 \usepackage{etoolbox}
 \usepackage{float}
+\usepackage{fontawesome5}
 \usepackage{fontspec}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{lua-ul} % underline for lualatex
 %\usepackage{soul} % for underlines, doesn't work with superscript
@@ -36,7 +38,7 @@
     {} % label
     {0em} % sep
     {} % before-code
-    [\vspace{-0.8em}\rule{\textwidth}{0.7pt}] % after-code
+    [\vspace{-0.8em}\rule{\textwidth}{1pt}] % after-code
 \titlespacing*{\section}{0em}{-1.5em}{0em}
 \setlist[itemize]{
     % vertical spacing
@@ -45,25 +47,25 @@
     % horizontal spacing
     %labelindent=0em,
     leftmargin=1em,
-    labelsep=*,
+    labelsep=3pt,
 }
-\setlist[enumerate]{
-    % vertical spacing
-    topsep=0em,
-    itemsep=0em,
-    % horizontal spacing
-    %labelindent=0em,
-    leftmargin=1em,
-    labelsep=*,
-}
-\setmainfont{Cabin}
-\newfontfamily{\arvo}{Arvo}
-\newfontfamily{\clearSans}{Clear Sans}
-\def\sectionfont{\clearSans}
-\def\projectfont{\arvo}
-\definecolor{projectcolor}{HTML}{003865}
-\definecolor{sectioncolor}{HTML}{EF5B0C}
-\definecolor{infocolor}{HTML}{000000}
+\setmainfont{IBMPlexSans}[%
+	Extension=.otf,
+	UprightFont=*-Regular,
+	BoldFont=*-SemiBold,
+	ItalicFont=*-TextItalic,
+]
+\setmonofont{RobotoMono}[%
+	Scale=MatchLowercase,
+]
+\newfontfamily{\Roboto}{Roboto}
+%\newfontfamily{\ClearSans}{Clear Sans}
+\def\sectionfont{\Roboto}
+\def\projectfont{}
+\def\infofont{\sectionfont}
+\definecolor{projectcolor}{HTML}{7E1717}
+\definecolor{sectioncolor}{HTML}{E55807}
+\definecolor{infocolor}{HTML}{7E1717}
 \SetTblrStyle{foot}{font=\footnotesize\vspace{-0.5em}}
 
 
@@ -77,7 +79,32 @@
 % other softwares
 \newcommand{\feap}{\href{https://www.cs.cornell.edu/~bindel//blurbs/feap.html}{\texttt{FEAP}}}
 % other commands
-\newcommand{\duration}[1]{\hfill[#1]}
+\newcommand{\duration}[1]{\hfill \textcolor{gray}{\small \faCalendar[Regular]{} #1}}
+\NewDocumentCommand{\education}{%
+	m % degree
+	m % institute
+	m % timeline/duration
+	o % additional info (thesis title, CPI etc.)
+}{%
+	{\bfseries#1} | #2\duration{#3}
+	\IfNoValueF{#4}{\\#4}
+}
+\NewDocumentCommand{\HangingList}{% a hanging list created using tblr environment
+	m % colspec
+	O{} % additional options to tblr,
+	m % tblr content
+}{%
+	\begin{tblr}{%
+		colspec=#1,
+		rowsep=0.5pt,
+		colsep=2pt,
+		rows={m},
+		row{odd}={black!3},
+		#2,
+	}
+		#3
+	\end{tblr}
+}
 \ExplSyntaxOn
 \NewDocumentCommand{\highlight}{%
     O{1} % highlighting level
@@ -85,8 +112,8 @@
 }{%
     \int_case:nnF{#1}{%
         {1}{\textbf{#2}} % highlight level 1
-        {2}{\underLine{#2}} % level 2
-        {3}{\emph{#2}} % level 3
+        %{2}{\emph{#2}} % level 2
+        %{3}{\underline{#2}}
     }
     {#2} % default
 }
@@ -98,11 +125,13 @@
     m % duration
 }{%
     {%
-        \color{projectcolor}
-        {\projectfont#1}\duration{#4}\\%
+    	\projectfont
+        {\textcolor{projectcolor}{#1}}\duration{#4}\\%
         {#2 $\vert$ #3}
     }
 }
+\renewcommand{\labelitemi}{\textcolor{gray}{\small\faJira}}
+\renewcommand{\labelitemii}{\textcolor{gray}{\faGenderless}}
 
 
 
@@ -115,94 +144,70 @@
 \setlength{\textfloatsep}{0.1em}
 \pagenumbering{gobble}
 {
-    \noindent\color{infocolor}
+    \noindent\color{infocolor}\infofont
 %    \begin{minipage}{0.07\textwidth}
 %        \includegraphics[width=\linewidth]{photo}
 %    \end{minipage}%
 %    \hspace{1em}
-    \begin{minipage}{0.5\textwidth}
-    	Potluri Vachan Deep\\
-        Male\\
-        DOB: 24-01-1997\\
-        \url{https://vachan-potluri.github.io/}
+    \begin{minipage}{0.8\textwidth}
+    	{\Large\bfseries Potluri Vachan Deep}\\[0.5em]
+    	{\large Ph.D. research scholar, IIT Bombay}\\[0.55em]
+    	{
+   			\faEnvelope[regular]{} \texttt{vachanpotluri1997@gmail.com} \quad
+   			\faPhone{} +91-773-869-5898 \quad
+   			\faLinkedin{} \href{https://www.linkedin.com/in/vachan-potluri-a202a4237/}{Vachan Potluri}
+   		}\\
+        {\faGlobe{} \url{https://vachan-potluri.github.io/}}
     \end{minipage}%
-    \hfill
-    \begin{minipage}{0.4\textwidth}
-    	\flushright
-    	Ph.D. research scholar\\
-        Mechanical Engineering Department\\
-        Indian Institute of Technology Bombay
-    \end{minipage}\\
 }
+\vspace{0.5em}
 %%%%
-\begin{table}[H]
-    \centering
-    \begin{talltblr}[%
-        label={none},
-        note{*}={Expected year of completion},
-    ]{%
-        colspec={X[-3] X[-5] X[-5] X[-2] X[-1]},
-        row{even}={gray!10},
-        row{3,4}={m},
-        row{1}={cmd=\bfseries},
-    }
-       	\toprule
-        Examination & University & Institute & Year & CPI/\%\\
-        \midrule
-        Ph.D. & IIT Bombay & IIT Bombay & 2023\TblrNote{*} & 9.86 \\
-        B.Tech. & IIT Bombay & IIT Bombay & 2018 & 9.72 \\
-        Intermediate/+2 & Andhra Pradesh Board of Intermediate Education & Excel Junior College & 2014 & 97.3\\
-        Matriculation & Andhra Pradesh Board of Secondary Education & Vardhana School & 2012 & 9.70\\
-        \bottomrule
-    \end{talltblr}
-\end{table}
-%%%%
-\section{Publications}
-\nocite{potluriPuranikBodi2022,potluriPuranikBodi2023}
-\printbibliography[%
-    heading=none,
+\section{Education}
+\education{Ph.D. Mechanical Engineering}{IIT Bombay}{Jul `18 -- Dec `23*}[%
+	\HangingList{XX[5]}{%
+		Thesis title & Development and analysis of discontinuous Galerkin computational framework for high order simulation of hypersonic shock-boundary layer interaction\\
+		CPI & 9.86\\
+		Key electives & Galerkin Methods for Fluid Dynamics, High Performance Scientific Computing, Magnetohydrodynamics and its engineering applications
+	}
+]\\[0.5em]
+\education{B.Tech. Mechanical Engineering}{IIT Bombay}{Jul `14 -- Jul `18}[%
+	\HangingList{XX[5]}{%
+		CPI & 9.72\\
+		Key electives & Computational Fluid Dynamics and Heat Transfer, Essentials of Turbulence, Finite Element and Boundary Element Methods, Fuels and Combustion, Numerical Methods for Conservation Laws\\
+	}
 ]
 %%%%
-\section{Projects}
+\section{Related experience}
 \begin{itemize}
 	\item \project{Development of high resolution schemes for compressible flows in \of}%
 		{Prof. Bhalchandra Puranik}%
-		{Mechanical Engineering Department, IIT Bombay}%
+		{IIT Bombay}%
 		{Dec `16 -- Apr `18}
 	\begin{itemize}
 		\item \highlight{Modified an existing solver} \rcf{} to use \highlight[2]{TVD-RK3 time integration} scheme
 		\item \highlight{Developed a new solver} \apupfrk{} that uses \highlight[2]{\apup{} flux scheme} along with RK3 time integration scheme
 		\item \highlight{Performed a comparative study} using these two solvers by conducting simulations of several 1D and 2D test cases to draw useful conclusions
 	\end{itemize}
+\end{itemize}
+%%%%
+\section{Other experience}
+\begin{itemize}
 	\item \project{Unified 2D Finite Element}
-		{Prof. Parag Tandiya}
-		{Mechanical Engineering Department, IIT Bombay}
-		{Mar `18 -- Apr `18}
+	{Prof. Parag Tandiya}
+	{IIT Bombay}
+	{Mar `18 -- Apr `18}
 	\begin{itemize}
 		\item \highlight{Implemented a subroutine} in FORTRAN77 library \feap{} for a \highlight[3]{new combined Plane Stress, Plain Strain and Axi--symmetric linear elasto--static element}, and validated the subroutine using several simple test cases
 	\end{itemize}
 	\item \project{Stair climbing wheel chair}
-		{Prof. Shantanu Tripathi}
-		{Mechanical Engineering Department, IIT Bombay}
-		{Jun `17 -- Dec `17}
+	{Prof. Shantanu Tripathi}
+	{IIT Bombay}
+	{Jul `17 -- Dec `17}
 	\begin{itemize}
 		\item \highlight{Proposed a mechanism} for a \highlight[2]{passive wheel chair} capable of \highlight[2]{climbing stairs} using the \highlight[3]{force provided by a companion}
 		\item \highlight{Built} a \highlight[2]{full scale basic functioning prototype} \highlight[3]{within 2 months} constraining to the alloted budget and resources
 		\item \highlight{Tested the prototype} on 2 different stair geometries and demonstrated it's effectiveness to Mechanical Engineering Department faculty, staff, and other students
 	\end{itemize}
-%	\item \projecttitle{Rarified Gas Flows}
-%		{Prof. Amit Agrawal}
-%		{Mechanical Engineering Department, IIT Bombay}
-%		{May `16 -- June `16}
-%		{Verifying simulations of flows in continuum--transition regime with Augmented Burnett equations}
-%	\begin{itemize}[leftmargin=*]
-%		\item Written a finite difference based MATLAB code to verify 2D experimental/simulation data with Augmented Burnett equations and validated it with Navier--Stokes solution
-%		\item Tested the code with Monte Carlo type Direct Simulation data of 0.01 Knudsen Number flow and obtained normalized error of order 10\%\
-%	\end{itemize}
-\end{itemize}
-%%%%
-\section{Internships}
-\begin{itemize}
 	\item \project{GE90 HPC airfoil durability analysis}
 	{Mr. Nageswara Ganji, Mr. Devesh Ojha}
 	{John F. Welch Technology Center, General Electric}
@@ -216,6 +221,12 @@
 		\item \highlight{Generated Campbell Diagrams} by \highlight[2]{simulating the vibration response} and \highlight{recalculated fatigue factor of safety}\ at critical locations of undamaged, damaged and defected blades for \highlight[2]{3 different materials}
 	\end{itemize}
 \end{itemize}
+%%%%
+\section{Publications}
+\nocite{potluriPuranikBodi2022,potluriPuranikBodi2023}
+\printbibliography[%
+heading=none,
+]
 %%%%
 \section{Scholastic Achievements}
 \begin{itemize}
