@@ -1,4 +1,4 @@
-% !TeX program = lualatex
+% !TeX program = pdflatex
 % !TeX spellcheck = en_GB
 \documentclass[a4paper,10pt]{article}
 
@@ -18,14 +18,12 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{fontawesome5}
-\usepackage{fontspec}
 \usepackage[
-	margin=1in,
+	margin=0.75in,
 	%showframe,
 ]{geometry}
 \usepackage{graphicx}
 \usepackage{lastpage}
-\usepackage{lua-ul} % underline for lualatex
 %\usepackage{soul} % for underlines, doesn't work with superscript
 \usepackage{tabularray}
 \UseTblrLibrary{booktabs}
@@ -46,35 +44,48 @@
 	\colorbox{sectioncolor!10}{\parbox{\dimexpr\textwidth-2\fboxsep}{#1}}}
 \titleformat{\section} % command
     [display] % shape
-    {\large\sectionfont} % format
+    {\sectionfont} % format
     {} % label
-    {0.4em} % sep
-    {\HighlightSection} % before-code
-    [\vspace{0.5em}] % after-code
+    {0.25em} % sep
+    {\hspace{-\fboxsep}\HighlightSection} % before-code
+    [\vspace{0.25em}] % after-code
 \titlespacing*{\section}{0em}{-1.5em}{0em}
 \setlist[itemize]{
     % vertical spacing
     topsep=0em,
-    itemsep=0em,
+    itemsep=2pt,
     % horizontal spacing
     %labelindent=0em,
     leftmargin=1.5em,
     labelsep=5pt,
 }
-\setmainfont{IBMPlexSans}[%
-	Extension=.otf,
-	UprightFont=*-Regular,
-	BoldFont=*-SemiBold,
-	ItalicFont=*-TextItalic,
-]
-\setmonofont{RobotoMono}[%
-	Scale=MatchLowercase,
-]
-\newfontfamily{\Roboto}{Roboto}[Scale=1.1] % use only for headings, hence scaled
-%\newfontfamily{\ClearSans}{Clear Sans}
-\def\sectionfont{\Roboto\bfseries}
-\def\projectfont{\Roboto\bfseries}
-\def\infofont{\Roboto}
+
+% advanced fonts
+%\usepackage{fontspec}
+%\setmainfont{IBMPlexSans}[%
+%	Extension=.otf,
+%	UprightFont=*-Regular,
+%	BoldFont=*-SemiBold,
+%	ItalicFont=*-TextItalic,
+%]
+%\setmonofont{RobotoMono}[%
+%	Scale=MatchLowercase,
+%]
+%\newfontfamily{\Roboto}{Roboto}[Scale=1.1] % use only for headings, hence scaled
+%%\newfontfamily{\ClearSans}{Clear Sans}
+%\def\sectionfont{\Roboto\bfseries}
+%\def\projectfont{\Roboto\bfseries}
+%\def\infofont{\Roboto}
+
+% helvetica font
+\usepackage{helvet}
+\usepackage{beramono}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\def\sectionfont{\Large\bfseries}
+\def\projectfont{\large\bfseries}
+\def\infofont{}
+
 %\definecolor{sectioncolor}{HTML}{E55807}
 %\definecolor{infocolor}{HTML}{7E1717}
 \definecolor{sectioncolor}{HTML}{0F3460}
@@ -93,16 +104,16 @@
 
 % openfoam related
 \newcommand{\apup}{AUSM\textsuperscript{+}-up}
-\newcommand{\apupfrk}{\texttt{ausmPlusUpFoamRK3}}
-\newcommand{\of}{\href{https://openfoam.org/}{\texttt{OpenFOAM}}}
-\newcommand{\rcf}{\texttt{rhoCentralFoam}}
-\newcommand{\rcfrk}{\texttt{rhoCentralFoamRK3}}
+\newcommand{\apupfrk}{ausmPlusUpFoamRK3}
+\newcommand{\of}{OpenFOAM}
+\newcommand{\rcf}{rhoCentralFoam}
+\newcommand{\rcfrk}{rhoCentralFoamRK3}
 % other softwares
-\newcommand{\dealii}{\href{https://www.dealii.org/}{\texttt{deal.II}}}
-\newcommand{\feap}{\href{https://www.cs.cornell.edu/~bindel//blurbs/feap.html}{\texttt{FEAP}}}
-\newcommand{\fluxo}{\href{https://github.com/project-fluxo/fluxo}{\texttt{FLUXO}}}
-\newcommand{\plens}{\href{https://github.com/vachan-potluri/plens}{\texttt{PLENS}}}
-\newcommand{\sutwo}{\href{https://su2code.github.io/}{\texttt{SU2}}}
+\newcommand{\dealii}{deal.II}
+\newcommand{\feap}{FEAP}
+\newcommand{\fluxo}{FLUXO}
+\newcommand{\plens}{PLENS}
+\newcommand{\sutwo}{SU2}
 % other commands
 \newcommand{\duration}[1]{\hfill \textcolor{black!75}{\small#1}}
 \NewDocumentCommand{\education}{%
@@ -121,7 +132,7 @@
 }{%
 	\begin{tblr}{%
 		colspec={#1},
-		rowsep=0.5pt,
+		rowsep=2pt,
 		colsep=2pt,
 		rows={m},
 		#2,
@@ -167,19 +178,22 @@
 
 
 
+
 \addbibresource{../publications/publications.bib}
 
 
 
 \begin{document}
+\hyphenpenalty=10000
+\raggedright
 {
     \noindent\color{infocolor}\infofont
-   	{\large\bfseries Potluri Vachan Deep}\\[0.5em]
+   	{\Large\bfseries Potluri Vachan Deep}\\[0.5em]
    	{Ph.D. research scholar, IIT Bombay}\\[0.5em]
    	{
 		\faEnvelope[regular]{} \texttt{vachanpotluri1997@gmail.com} \quad
 		\faPhone{} +91-773-869-5898 \quad
-		\faLinkedin{} \href{https://www.linkedin.com/in/vachan-potluri-a202a4237/}{Vachan Potluri}
+		\faLinkedin{} \href{https://www.linkedin.com/in/vachan-potluri-a202a4237/}{\texttt{Vachan Potluri}}
 	}\\[0.25em]
     {\faGlobe{} \url{https://vachan-potluri.github.io/}}
 }
@@ -188,23 +202,30 @@
 
 
 \section{Skills}
-Programming languages: C++, Python, MATLAB/Scilab\\
-CFD softwares: \of{}, \sutwo{}\\
+\HangingList{XX[3]}[%
+	rowsep=2pt,
+	row{odd}={black!3},
+]{%
+	Programming languages & C++, Python, MATLAB/Scilab\\
+	CFD software & \of{}, \sutwo{}, \dealii{}\\
+	CFD-related & {ParaView}, {SALOME}, {Gmsh}\\
+	Other & Git/GitHub, Linux, \LaTeX{}, {SOLIDWORKS}\\
+}
 
 
 
 \section{Education}
 \education{Ph.D. Mechanical Engineering}{IIT Bombay}{Jul `18 -- present}[%
-	\HangingList{XX[5]}[row{odd}={black!3},]{%
-		Thesis title & Development and analysis of discontinuous Galerkin computational framework for high order simulation of hypersonic shock-boundary layer interaction\\
-		Key electives & Galerkin Methods for Fluid Dynamics, High Performance Scientific Computing, Magnetohydrodynamics and its engineering applications\\
+	\HangingList{XX[6,l]}[row{odd}={black!3},]{%
+		Thesis title & {Development and analysis of discontinuous Galerkin computational framework for high order simulation of hypersonic shock-boundary layer interaction}\\
+		Key electives & {High Performance Scientific Computing, Galerkin Methods for Fluid Dynamics, Magnetohydrodynamics and its engineering applications}\\
 		CPI & 9.86\\
 	}
 ]\\[0.5em]
 \education{B.Tech. Mechanical Engineering}{IIT Bombay}{Jul `14 -- Jul `18}[%
-	\HangingList{XX[5]}[row{odd}={black!3},]{%
+	\HangingList{XX[6,l]}[row{odd}={black!3},]{%
 		CPI & 9.72\\
-		Key electives & Computational Fluid Dynamics and Heat Transfer, Essentials of Turbulence, Finite Element and Boundary Element Methods, Fuels and Combustion, Numerical Methods for Conservation Laws\\
+		Key electives & {Numerical Methods for Conservation Laws, Computational Fluid Dynamics and Heat Transfer, Finite Element and Boundary Element Methods, Essentials of Turbulence, Fuels and Combustion}\\
 	}
 ]
 
@@ -212,21 +233,21 @@ CFD softwares: \of{}, \sutwo{}\\
 
 \section{Related experience}
 \begin{itemize}
-	\item \project{{Development and analysis of discontinuous Galerkin\\simulation framework for compressible flows}}{Ph.D. thesis}{IIT Bombay}{Jul `19 -- present}
+	\item \project{{Development and analysis of discontinuous Galerkin simulation framework for compressible flows}}{Ph.D. thesis}{IIT Bombay}{Jul `19 -- present}
 	\begin{itemize}
 		\item \highlight{Developed a solver} \plens{} implementing a subcell limiter using the \dealii{} C++ FEM library
-		\item \highlight{Performed an extensive computational study} to demonstrate superior performance of high order solutions in terms of accuracy/DoFs
+		\item \highlight{Performed an extensive computational study} and demonstrated superior accuracy/DoFs of high order solutions even in presence of shocks
 		\item \highlight{Proposed and validated an extension} of the subcell limiter for its use in hypersonic regime
-		\item \highlight{Conducted a restricted performance comparison} of an equivalent solver \fluxo{} with \of{} and \sutwo{} to demonstrate its better performance in terms of accuracy/cost and accuracy/memory
+		\item \highlight{Conducted a performance comparison} of an equivalent solver \fluxo{} with \of{} and \sutwo{} and illustrated its higher accuracy/cost and accuracy/memory
 	\end{itemize}
-	\item \project{Development of high resolution schemes\\for compressible flows in \of}%
+	\item \project{Development of high resolution schemes for compressible flows in \of}%
 		{B.Tech. project}%
 		{IIT Bombay}%
 		{Dec `16 -- Apr `18}
 	\begin{itemize}
-		\item \highlight{Modified the existing solver} \rcf{} to use TVD-RK3 time integration scheme
-		\item \highlight{Developed a new solver} \apupfrk{} implementing \apup{} flux scheme along with TVD-RK3 time integration scheme
-		\item \highlight{Performed a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to draw conclusions relevant to the flux schemes
+		\item \highlight{Modified an existing solver} \rcf{} to use TVD-RK3 time integration scheme
+		\item \highlight{Introduced a new solver} \apupfrk{} to implement \apup{} flux scheme along with TVD-RK3 time integration scheme
+		\item \highlight{Presented a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to draw conclusions relevant to the flux schemes
 	\end{itemize}
 \end{itemize}
 
@@ -241,22 +262,22 @@ CFD softwares: \of{}, \sutwo{}\\
 	\begin{itemize}
 		\item \highlight{Implemented a subroutine} in FORTRAN77 library \feap{} for a new combined Plane Stress, Plain Strain and Axi-symmetric linear Elasto-static element, and validated the subroutine using simple test cases
 	\end{itemize}
-	\item \project{Stair climbing wheel chair}
+	\item \project{Stair climbing wheel chair project}
 	{Course project}
 	{IIT Bombay}
 	{Jul `17 -- Dec `17}
 	\begin{itemize}
-		\item \highlight{Proposed a mechanism} for a passive wheel chair capable of climbing stairs using the force provided by a companion
-		\item \highlight{Built a full-scale basic functioning prototype} in 2 months, constraining to the allotted budget and resources
-		\item \highlight{Demonstrated the prototype effectiveness} on 2 different stair geometries to Mechanical Engineering Department faculty, staff, and other students
+		\item \highlight{Designed a mechanism} for a passive wheel chair capable of climbing stairs using the force provided by a companion
+		\item \highlight{Built a full-scale basic functioning prototype} costing less than 10,000 INR in 2 months
+		\item \highlight{Demonstrated the prototype effectiveness} on 2 different stair geometries
 	\end{itemize}
 	\item \project{GE90 HPC airfoil durability analysis}
 	%{Mr. Nageswara Ganji, Mr. Devesh Ojha}
 	{Internship}
-	{John F. Welch Technology Center, General Electric}
+	{John F. Welch Technology Center, General Electric, Bangalore}
 	{May `17 -- Jul `17}
 	\begin{itemize}
-		\item \highlight{Modified} existing mesh of GE90-115B high pressure compressor stage-9 rotor blade, to model
+		\item \highlight{Modified existing mesh} of GE90-115B high pressure compressor stage-9 rotor blade, to model
 		\begin{enumerate}
 			\item Three types of damaged blades by making notches at different locations on the leading edge
 			\item A defectively manufactured blade by changing thickness of leading edge according to manufacturing tolerance
@@ -280,14 +301,13 @@ Journal articles
 \section{Honours}
 \def\ListBullet{\labelitemii}
 \HangingList{X[0.15] X[8] X}[%
-	rowsep=1pt,
+	rowsep=2pt,
 	column{1}={cmd=\ListBullet}]
 {%
 	& Awarded \highlight{Prime Minister's Research Fellowship} (PMRF) to pursue Ph.D. in high order numerical methods for hypersonic flows & \duration{May `18}\\
-	& \highlight{Stood 2nd in Department} in B.Tech. among a batch exceeding 150 students & \duration{May `18}\\
 	& \highlight{Scored 829} in Graduate Aptitude Test in Engineering (GATE) 2018 & \duration{Mar `18}\\
 	& \highlight{Secured All India Rank 129} in JEE Advanced 2014 in general category & \duration{May `14}\\
-	& Awarded \highlight{Kishore Vigyanik Protshahan Yogana} (KVPY) fellowship by Indian Institute of Science (IISc), Bangalore & \duration{Dec `13}\\
+	& Offered \highlight{Kishore Vigyanik Protshahan Yogana} (KVPY) fellowship by Indian Institute of Science (IISc), Bangalore & \duration{Dec `13}\\
 	& \highlight{Secured position among top 1\%\ students} of former Andhra Pradesh who appeared for National Standard Examination in Physics (NSEP) & \duration{Dec `13}\\
 }
 
@@ -296,7 +316,7 @@ Journal articles
 \section{Extracurricular activities}
 \def\ListBullet{\labelitemii}
 \HangingList{X[0.15] X[8] X}[%
-	rowsep=1pt,
+	rowsep=2pt,
 	column{1}={cmd=\ListBullet}]
 {%
 	& \highlight{Grade 8 Piano musician} certified by Trinity College London & \duration{May `12}\\
