@@ -161,12 +161,12 @@
 }{%
     {%
     	\begin{tblr}[%
-    		baseline=T % doesn't work
+    		% baseline=T % doesn't work; use rows={t} instead
    		]{%
    			colspec={X[4.25,l] X[r]},
    			rowsep=0pt,
    			colsep=0pt,
-   			rows={m},
+   			rows={t},
    		}
    			{\projectfont\textcolor{projectcolor}{#1}} & \duration{#4}
    		\end{tblr}
@@ -307,7 +307,8 @@ Journal articles
 \def\ListBullet{\labelitemii}
 \HangingList{X[0.15] X[8] X}[%
 	rowsep=2pt,
-	column{1}={cmd=\ListBullet}]
+	column{1}={cmd=\ListBullet},
+    rows={t},]
 {%
 	& Awarded \highlight{Prime Minister's Research Fellowship} (PMRF) to pursue Ph.D. in high order numerical methods for hypersonic flows & \duration{May `18}\\
 	& \highlight{Scored 829} in Graduate Aptitude Test in Engineering (GATE) 2018 & \duration{Mar `18}\\
@@ -322,9 +323,10 @@ Journal articles
 \def\ListBullet{\labelitemii}
 \HangingList{X[0.15] X[8] X}[%
 	rowsep=2pt,
-	column{1}={cmd=\ListBullet}]
+	column{1}={cmd=\ListBullet},
+    rows={t},]
 {%
-	& \highlight{Grade 8 Piano musician} certified by Trinity College London & \duration{May `12}\\
-	& \highlight{Grade 6 Guitar musician} certified by Trinity College London & \duration{May `11}\\
+    & \highlight{Grade 6 Guitar musician} certified by Trinity College London & \duration{Sep `11}\\
+	& \highlight{Grade 8 Piano musician} certified by Trinity College London & \duration{Nov `10}\\
 }
 \end{document}
