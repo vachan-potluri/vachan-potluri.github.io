@@ -13,7 +13,7 @@
     sorting=nyt,
     giveninits=true, % https://tex.stackexchange.com/a/21977/133968
 ]{biblatex}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{etoolbox}
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -78,8 +78,8 @@
 %\def\infofont{\Roboto}
 
 % helvetica font
-\usepackage{helvet}
-\usepackage{beramono}
+\usepackage[scaled]{helvet}
+\usepackage[scaled]{beramono}
 \renewcommand*{\familydefault}{\sfdefault}
 \usepackage[T1]{fontenc}
 \def\sectionfont{\Large\bfseries}
@@ -175,6 +175,7 @@
 }
 \renewcommand{\labelitemi}{\textcolor{gray}{\small\faJira}}
 \renewcommand{\labelitemii}{\textcolor{gray}{\faGenderless}}
+\renewcommand{\labelitemiii}{\textcolor{gray}{$\bullet$}}
 
 
 
@@ -208,8 +209,8 @@
 ]{%
 	Programming languages & C++, Python, MATLAB/Scilab\\
 	CFD software & \of{}, \sutwo{}, \dealii{}, FLEXI, FLUXO\\
-	CFD-related & {ParaView}, {SALOME}, {Gmsh}\\
-	Other & Git/GitHub, Linux, \LaTeX{}, {SOLIDWORKS}\\
+	CFD-related software & {ParaView}, {SALOME}, {Gmsh}\\
+	Other software/tools & Git/GitHub, Linux, \LaTeX{}, {SOLIDWORKS}\\
 }
 
 
@@ -217,7 +218,7 @@
 \section{Education}
 \education{Ph.D. Mechanical Engineering}{IIT Bombay}{Jul `18 -- present}[%
 	\HangingList{XX[6,l]}[row{odd}={black!3},]{%
-		Thesis title & {Development and analysis of discontinuous Galerkin computational framework for high order simulation of hypersonic shock-boundary layer interaction}\\
+		Thesis topic & {Development and analysis of discontinuous Galerkin computational framework for high order simulation of hypersonic shock-boundary layer interaction}\\
 		Key electives & {High Performance Scientific Computing, Galerkin Methods for Fluid Dynamics, Magnetohydrodynamics and its engineering applications}\\
 		CPI & 9.86\\
 	}
@@ -235,7 +236,7 @@
 \begin{itemize}
 	\item \project{{Development and analysis of discontinuous Galerkin simulation framework for compressible flows}}{Ph.D. thesis}{IIT Bombay}{Jul `19 -- present}
 	\begin{itemize}
-		\item \highlight{Developed a solver} \plens{} implementing a subcell limiter using the \dealii{} C++ FEM library
+		\item \highlight{Developed a solver} \plens{} implementing a DG subcell limiter using \dealii{} C++ FEM library
 		\item \highlight{Performed an extensive computational study} and demonstrated superior accuracy/DoFs of high order solutions even in presence of shocks
 		\item \highlight{Proposed and validated an extension} of the subcell limiter for its use in hypersonic regime
 		\item \highlight{Conducted a performance comparison} of an equivalent solver \fluxo{} with \of{} and \sutwo{} and illustrated its higher accuracy/cost and accuracy/memory
@@ -246,8 +247,12 @@
 		{Dec `16 -- Apr `18}
 	\begin{itemize}
 		\item \highlight{Modified an existing solver} \rcf{} to use TVD-RK3 time integration scheme
-		\item \highlight{Introduced a new solver} \apupfrk{} to implement \apup{} flux scheme along with TVD-RK3 time integration scheme
-		\item \highlight{Presented a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to draw conclusions relevant to the flux schemes
+		\item \highlight{Introduced a new solver} \apupfrk{} to implement \apup{} flux scheme along with TVD-RK3 time integration method
+		\item \highlight{Presented a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to identify vulnerabilities of the flux schemes\\
+        \begin{itemize*}[itemjoin=\hspace{1em}]
+            \item Kurganov-Tadmor: stationary slip lines
+            \item \apup: strong multidimensional expansions
+        \end{itemize*}
 	\end{itemize}
 \end{itemize}
 
@@ -273,7 +278,7 @@
 	{Jul `17 -- Dec `17}
 	\begin{itemize}
 		\item \highlight{Designed a mechanism} for a passive chair capable of climbing stairs using a companion's force
-		\item \highlight{Built a full-scale basic functioning prototype} costing less than 10,000 INR in 2 months
+		\item \highlight{Built a full-scale basic functioning prototype} costing less than INR 10,000 in 2 months
 		\item \highlight{Demonstrated the prototype effectiveness} on 2 different stair geometries
 	\end{itemize}
 	\item \project{GE90 HPC airfoil durability analysis}
@@ -284,8 +289,8 @@
 	\begin{itemize}
 		\item \highlight{Modified existing mesh} of GE90-115B high pressure compressor stage-9 rotor blade, to model
 		\begin{enumerate}
-			\item Three types of damaged blades by making notches at different locations on the leading edge
-			\item A defectively manufactured blade by changing thickness of leading edge according to manufacturing tolerance
+			\item Three kinds of damaged blades by making notches at different locations on the leading edge
+			\item Defectively manufactured blades by changing leading edge thickness according to manufacturing tolerance
 		\end{enumerate}
 		\item \highlight{Generated Campbell Diagrams} by simulating the vibration response in ANSYS and \highlight{recalculated fatigue factor of safety} at critical locations of undamaged, damaged and defected blades for 3 different materials
 	\end{itemize}
