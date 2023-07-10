@@ -19,7 +19,7 @@
 \usepackage{float}
 \usepackage{fontawesome5}
 \usepackage[
-	margin=0.75in,
+	margin=1.5cm,
 	%showframe,
 ]{geometry}
 \usepackage{graphicx}
@@ -46,7 +46,7 @@
     [display] % shape
     {\sectionfont} % format
     {} % label
-    {0.25em} % sep
+    {0pt} % sep
     {\hspace{-\fboxsep}\HighlightSection} % before-code
     [\vspace{0.25em}] % after-code
 \titlespacing*{\section}{0em}{-1.5em}{0em}
@@ -83,7 +83,7 @@
 \renewcommand*{\familydefault}{\sfdefault}
 \usepackage[T1]{fontenc}
 \def\sectionfont{\Large\bfseries}
-\def\projectfont{\large\bfseries}
+\def\projectfont{\bfseries}
 \def\infofont{}
 
 %\definecolor{sectioncolor}{HTML}{E55807}
@@ -161,7 +161,7 @@
 }{%
     {%
     	\begin{tblr}[%
-    		% baseline=T % doesn't work; use rows={t} instead
+    		baseline=T % also requires rows={t}
    		]{%
    			colspec={X[4.25,l] X[r]},
    			rowsep=0pt,
@@ -208,7 +208,7 @@
 	row{odd}={black!3},
 ]{%
 	Programming languages & C++, Python, MATLAB/Scilab\\
-	CFD software & \of{}, \sutwo{}, \dealii{}, FLEXI, FLUXO\\
+	CFD software & \of{}, \sutwo{}, \dealii{}, FLEXI/FLUXO\\
 	CFD-related software & {ParaView}, {SALOME}, {Gmsh}\\
 	Other software/tools & Git/GitHub, Linux, \LaTeX{}, {SOLIDWORKS}\\
 }
@@ -241,6 +241,10 @@
 		\item \highlight{Proposed and validated an extension} of the subcell limiter for its use in hypersonic regime
 		\item \highlight{Conducted a performance comparison} of an equivalent solver \fluxo{} with \of{} and \sutwo{} and illustrated its higher accuracy/cost and accuracy/memory
 	\end{itemize}
+    \item \project{High performance parallel programming task}{Course project}{IIT Bombay}{Jan `19 -- Apr `19}
+    \begin{itemize}
+        \item \textbf{Developed and tested} OpenMP, MPI and CUDA versions of a 2D cartesian inviscid compressible flow solver
+    \end{itemize}
 	\item \project{Development of high resolution schemes for compressible flows in \of}%
 		{B.Tech. project}%
 		{IIT Bombay}%
@@ -270,7 +274,7 @@
 	{IIT Bombay}
 	{Mar `18 -- Apr `18}
 	\begin{itemize}
-		\item \highlight{Implemented a subroutine} in FORTRAN77 library \feap{} for a new combined Plane Stress, Plain Strain and Axi-symmetric linear Elasto-static element, and validated the subroutine using simple test cases
+		\item \highlight{Implemented and validated a subroutine} in FORTRAN77 library \feap{} for a new combined Plane Stress, Plain Strain and Axi-symmetric linear Elasto-static element
 	\end{itemize}
 	\item \project{Stair climbing chair project}
 	{Course project}
@@ -334,4 +338,43 @@ Journal articles
     & \highlight{Grade 6 Guitar musician} certified by Trinity College London & \duration{Sep `11}\\
 	& \highlight{Grade 8 Piano musician} certified by Trinity College London & \duration{Nov `10}\\
 }
+
+
+
+\section{References}
+\begin{tblr}{%
+    %colspec={X[0.9] X X[0.9] X[1.3]},
+    colspec={XXX},
+    colsep=0pt,
+}
+    {
+        Bhalchandra Puranik\\
+        Professor\\
+        Mechanical Engineering\\
+        IIT Bombay\\
+        \texttt{puranik@iitb.ac.in}
+    } &
+    {
+        Kowsik Bodi\\
+        Associate Professor\\
+        Aerospace Engineering\\
+        IIT Bombay\\
+        \texttt{kbodi@aero.iitb.ac.in}
+    } &
+    {
+        Neeraj Kumbhakarna\\
+        Associate Professor\\
+        Mechanical Engineering\\
+        IIT Bombay\\
+        \texttt{neeraj\_k@iitb.ac.in}
+    }
+%    &
+%    {
+%        Shivasubramanian Gopalakrishnan\\
+%        Associate Professor\\
+%        Mechanical Engineering\\
+%        IIT Bombay\\
+%        \texttt{sgopalak@iitb.ac.in}
+%    }
+\end{tblr}
 \end{document}
