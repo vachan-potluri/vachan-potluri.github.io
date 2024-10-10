@@ -156,7 +156,7 @@
 \ExplSyntaxOff
 \NewDocumentCommand{\project}{% prints out project details
     m % project name/title
-    m % project supervisor or project type
+    o % project supervisor or project type
     m % venue
     m % duration
 }{%
@@ -171,7 +171,7 @@
    		}
    			{\projectfont\textcolor{projectcolor}{#1}} & \duration{#4}
    		\end{tblr}
-        {#2 $\vert$ #3}
+        {\IfNoValueF{#2}{#2 $\vert$}~#3}
     }
 }
 \renewcommand{\labelitemi}{\textcolor{gray}{\small\faJira}}
@@ -191,26 +191,27 @@
 {
     \noindent\color{infocolor}\infofont
    	{\Large\bfseries Potluri Vachan Deep}\\[0.5em]
-   	{Research Engineer - Development, Convergent Science India LLP}\\[0.5em]
+   	{Research Engineer - Development, Convergent Science India LLP}\\
    	{
+   		\footnotesize
 		\faEnvelope[regular]{} \texttt{vachanpotluri1997@gmail.com} \quad
 		\faPhone{} +91-773-869-5898 \quad
-		\faLinkedin{} \href{https://www.linkedin.com/in/vachan-potluri-a202a4237/}{\texttt{Vachan Potluri}}
-	}\\[0.25em]
-    {\faGlobe{} \url{https://vachan-potluri.github.io/}}
+		\faLinkedin{} \href{https://www.linkedin.com/in/vachan-potluri-a202a4237/}{\texttt{Vachan Potluri}}\quad
+		\faGlobe{} \url{https://vachan-potluri.github.io/}
+	}
 }
 \vspace{0.5em}
 
 
 
 \section{Skills}
-\HangingList{XX[3]}[%
+\HangingList{XX[1.5]}[%
 	rowsep=2pt,
 	row{odd}={black!3},
 ]{%
 	Programming languages & C++, Python, MATLAB/Scilab\\
 	CFD software & \of{}, \sutwo{}, \dealii{}, FLEXI/FLUXO\\
-	CFD-related software & {ParaView}, {SALOME}, {Gmsh}\\
+	CFD pre- and post-processing software & {ParaView}, {SALOME}, {Gmsh}\\
 	Other software/tools & Git/GitHub, Linux, \LaTeX{}, {SOLIDWORKS}\\
 }
 
@@ -235,33 +236,37 @@
 
 \section{Related experience}
 \begin{itemize}
-	\item \project{{Development and analysis of discontinuous Galerkin simulation framework for compressible flows}}{Ph.D. thesis}{IIT Bombay}{Jul `19 -- Dec `23}
+	\item \project{{Research Engineer - Development}}{Convergent Science India LLP}{Jan `24 -- Oct `24}
 	\begin{itemize}
-		\item \highlight{Developed a solver} \plens{} implementing a DG subcell limiter using \dealii{} C++ FEM library
+		\item \highlight{Provided enhancement and bug fixes} to material physical modelling among other software enhancement tasks
+	\end{itemize}
+	\item \project{{Development and analysis of discontinuous Galerkin simulation framework for compressible flows}}[Ph.D. thesis]{IIT Bombay}{Jul `19 -- Dec `23}
+	\begin{itemize}
+		\item \highlight{Developed a solver} implementing a DG subcell limiter using \dealii{} C++ FEM library
 		\item \highlight{Performed an extensive computational study} and demonstrated superior accuracy/DoFs of high order solutions even in presence of shocks
 		\item \highlight{Proposed and validated an extension} of the subcell limiter for its use in hypersonic regime
 		\item \highlight{Conducted a performance comparison} of an equivalent solver \fluxo{} with \of{} and \sutwo{} and illustrated its higher accuracy/cost and accuracy/memory
 	\end{itemize}
-    \item \project{High performance parallel programming task}{Course project}{IIT Bombay}{Jan `19 -- Apr `19}
+    \item \project{High performance parallel programming task}[Course project]{IIT Bombay}{Jan `19 -- Apr `19}
     \begin{itemize}
         \item \textbf{Developed and tested} OpenMP, MPI and CUDA versions of a 2D cartesian inviscid compressible flow solver
     \end{itemize}
 	\item \project{Development of high resolution schemes for compressible flows in \of}%
-		{B.Tech. project}%
+		[B.Tech. project]%
 		{IIT Bombay}%
 		{Dec `16 -- Apr `18}
 	\begin{itemize}
-		\item \highlight{Modified an existing solver} \rcf{} to use TVD-RK3 time integration scheme
-		\item \highlight{Introduced a new solver} \apupfrk{} to implement \apup{} flux scheme along with TVD-RK3 time integration method
-		\item \highlight{Presented a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to identify vulnerabilities of the flux schemes\\
-        \begin{itemize*}[itemjoin=\hspace{1em}]
-            \item Kurganov-Tadmor: stationary slip lines
-            \item \apup: strong multidimensional expansions
-        \end{itemize*}
+		\item \highlight{Modified an existing compressible flow solver} to use TVD-RK3 time integration scheme
+		\item \highlight{Introduced a new solver} to implement \apup{} flux scheme along with TVD-RK3 time integration method
+		\item \highlight{Presented a comparative study} of these two solvers by performing simulations of several 1D and 2D test cases to identify vulnerabilities of the corresponding flux schemes\\
+%        \begin{itemize*}[itemjoin=\hspace{1em}]
+%            \item Kurganov-Tadmor: stationary slip lines
+%            \item \apup: strong multidimensional expansions
+%        \end{itemize*}
 	\end{itemize}
 	\item \project{GE90 HPC airfoil durability analysis}
 	%{Mr. Nageswara Ganji, Mr. Devesh Ojha}
-	{Internship}
+	[Internship]
 	{John F. Welch Technology Center, General Electric, Bangalore}
 	{May `17 -- Jul `17}
 	\begin{itemize}
@@ -278,20 +283,20 @@
 
 \section{Other experience}
 \begin{itemize}
-	\item \project{Guest Lecturer}{Prime Minister's Research Fellowship deliverable}{VJTI, Mumbai}{Apr `21 -- Apr `23}
+	\item \project{Guest Lecturer}[Prime Minister's Research Fellowship deliverable]{VJTI, Mumbai}{Apr `21 -- Apr `23}
 	\begin{itemize}
 		\item \highlight{Taught} gas dynamics and incompressible potential flow as part of M.Tech. fluid dynamics course
 		\item \highlight{Delivered software demonstrations} of \of{} and Scilab as part of B.Tech. CFD lab
 	\end{itemize}
 	\item \project{Unified 2D Finite Element development}
-	{Course project}
+	[Course project]
 	{IIT Bombay}
 	{Mar `18 -- Apr `18}
 	\begin{itemize}
 		\item \highlight{Implemented and validated a subroutine} in FORTRAN77 library \feap{} for a new combined Plane Stress, Plain Strain and Axi-symmetric linear Elasto-static element
 	\end{itemize}
 	\item \project{Stair climbing chair project}
-	{Course project}
+	[Course project]
 	{IIT Bombay}
 	{Jul `17 -- Dec `17}
 	\begin{itemize}
